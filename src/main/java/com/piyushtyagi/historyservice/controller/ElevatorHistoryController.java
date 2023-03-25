@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/history-service")
@@ -28,6 +29,7 @@ public class ElevatorHistoryController {
                                 @PathVariable("elevatorId") Long elevatorId,
                                 @PathVariable("startDate") String startDate,
                                 @PathVariable("endDate") String endDate) {
-        return elevatorHistoryService.getTravelHistory(hotelId, elevatorId, Date.valueOf(startDate), Date.valueOf(endDate));
+        return Objects.isNull(elevatorHistoryService.getTravelHistory(hotelId, elevatorId, Date.valueOf(startDate), Date.valueOf(endDate))) ?
+                0 : elevatorHistoryService.getTravelHistory(hotelId, elevatorId, Date.valueOf(startDate), Date.valueOf(endDate));
     }
 }

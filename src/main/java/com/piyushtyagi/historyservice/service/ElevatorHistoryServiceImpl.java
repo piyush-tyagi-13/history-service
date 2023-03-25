@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
 
 @Service
 public class ElevatorHistoryServiceImpl implements ElevatorHistoryService {
@@ -26,7 +25,7 @@ public class ElevatorHistoryServiceImpl implements ElevatorHistoryService {
     }
 
     @Override
-    public int getTravelHistory(Long hotelId, Long elevatorId, Date startDate, Date endDate) {
+    public Integer getTravelHistory(Long hotelId, Long elevatorId, Date startDate, Date endDate) {
         return elevatorHistoryRepository.findTotalFloorsTraveledByElevatorInPeriod(hotelId, elevatorId,
                 startDate, endDate);
     }

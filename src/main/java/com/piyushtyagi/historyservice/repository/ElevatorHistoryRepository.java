@@ -11,5 +11,6 @@ public interface ElevatorHistoryRepository extends JpaRepository<ElevatorHistory
 
     @Query("SELECT SUM(h.floorTravelled) FROM ElevatorHistory h WHERE h.hotelId = :hotelId " +
             "AND h.elevatorId = :elevatorId AND h.timestamp BETWEEN :startDate AND :endDate")
-    Integer findTotalFloorsTraveledByElevatorInPeriod(@Param("hotelId") Long hotelId, @Param("elevatorId") Long elevatorId, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+    Integer findTotalFloorsTraveledByElevatorInPeriod(@Param("hotelId") Long hotelId, @Param("elevatorId") Long elevatorId,
+                                                      @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }
